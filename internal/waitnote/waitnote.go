@@ -25,6 +25,6 @@ func (n *Note) Wait() {
 func (n *Note) Signal() {
 	n.mu.Lock()
 	n.ok = true
+	n.c.Broadcast()
 	n.mu.Unlock()
-	// BUG: forgot Broadcast
 }
